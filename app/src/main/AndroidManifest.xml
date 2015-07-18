@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.farazfazli.superpdfconverter" >
+<manifest
+    package="com.farazfazli.superpdfconverter"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -22,7 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FileChooser" />
+        <activity android:name=".PDFManager"/>
+        <activity android:name=".AndroidFileBrowser"/>
     </application>
 
 </manifest>

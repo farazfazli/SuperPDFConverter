@@ -2,87 +2,86 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity">
-    <EditText
+
+    <ImageView
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/urlField"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/logo"/>
+    <EditText
         android:id="@+id/urlField"
-        android:inputType="textUri"
-        android:background="@drawable/rounded_corners"
-        android:padding="10dp"
-        android:textColorHint="#bbbbbb"
-        android:hint="Enter a URL to Convert!"
-        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/grabPdf"
-        android:layout_toStartOf="@+id/grabPdf"/>
+        android:layout_toStartOf="@+id/grabPdf"
+        android:background="@drawable/rounded_corners"
+        android:hint="Enter a URL to Convert!"
+        android:inputType="textUri"
+        android:padding="10dp"
+        android:textColorHint="#bbbbbb"/>
     <Button
-        android:textAllCaps="false"
+        android:id="@+id/grabPdf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Grab PDF!"
-        android:id="@+id/grabPdf"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:background="@drawable/rounded_blue_button"
-        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/urlField"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/urlField"
-        android:layout_alignBottom="@+id/urlField"/>
+        android:background="@drawable/rounded_blue_button"
+        android:text="Grab PDF!"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"/>
 
     <Button
-        android:textAllCaps="false"
+        android:id="@+id/viewHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View History"
-        android:id="@+id/viewHistory"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/rounded_blue_button"
         android:layout_above="@+id/deleteHistory"
         android:layout_alignLeft="@+id/deleteHistory"
-        android:layout_alignStart="@+id/deleteHistory"/>
+        android:layout_alignStart="@+id/deleteHistory"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_blue_button"
+        android:text="View History"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"/>
 
     <Button
-        android:textAllCaps="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete All"
         android:id="@+id/deleteHistory"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:background="@drawable/rounded_blue_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:background="@drawable/rounded_blue_button"
+        android:text="Delete All"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"/>
 
     <TextView
+        android:id="@+id/history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0 total websites converted!"
-        android:id="@+id/history"
-        android:textColor="#FF3A8AEC"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:text="0 total websites converted!"
+        android:textColor="#FF3A8AEC"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Super PDF Converter"
-        android:id="@+id/title"
-        android:textColor="#FF3A8AEC"
-        android:textSize="35dp"
-        android:layout_alignRight="@+id/grabPdf"
-        android:layout_alignEnd="@+id/grabPdf"
-        android:layout_above="@+id/urlField"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
 </RelativeLayout>
