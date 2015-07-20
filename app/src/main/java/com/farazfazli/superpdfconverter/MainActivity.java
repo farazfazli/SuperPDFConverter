@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -122,6 +123,24 @@ public class MainActivity extends Activity {
         updateNumberOfFiles();
     }
 
+    public boolean isOnline() {
+
+        Runtime runtime = Runtime.getRuntime();
+        try {
+
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+            int exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
     public void updateNumberOfFiles() {
         File f = new File(path);
         File[] files = f.listFiles();
@@ -145,10 +164,19 @@ public class MainActivity extends Activity {
     }
 
     public void convertToPDF(String url) {
-        Intent intent = new Intent(this, PDFManager.class);
-        intent.putExtra("WEBSITE_NAME", website);
-        intent.putExtra("url", url);
-        startActivity(intent);
+        if (isOnline()) {
+            Intent intent = new Intent(this, PDFManager.class);
+            intent.putExtra("WEBSITE_NAME", website);
+            intent.putExtra("url", url);
+            startActivity(intent);
+        } else {
+            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(MainActivity.this);
+            builder.setMessage("Check your internet connection and try again!")
+                    .setTitle("Error!")
+                    .setPositiveButton(android.R.string.ok, null);
+            android.app.AlertDialog dialog = builder.create();
+            dialog.show();
+        }
     }
 
     public void setPath(String filePath) {
